@@ -34,3 +34,5 @@ node_modules
 
 # Typings dependency directory
 typings
+
+.idea
