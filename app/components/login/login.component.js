@@ -48,8 +48,9 @@ System.register(['angular2/core', 'angular2/router', 'angular2/http'], function(
                     }
                 };
                 LoginComponent.prototype.saveLogin = function (tokenObj) {
+                    console.log(tokenObj);
                     window.localStorage.setItem('gh_token', JSON.stringify(tokenObj));
-                    window.location.href = '/repos';
+                    //window.location.href = '/repos';
                 };
                 LoginComponent = __decorate([
                     core_1.Component({

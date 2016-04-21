@@ -31,7 +31,7 @@ System.register(['angular2/core', 'angular2/http'], function(exports_1, context_
                     var token = JSON.parse(window.localStorage.getItem('gh_token')).access_token;
                     var headers = new http_1.Headers();
                     console.log(token);
-                    headers.append('Authorization', token + ' OAUTH-TOKEN');
+                    headers.append('Authorization', 'token ' + token);
                     return this.http.get(this._repoUrl, { headers: headers }).map(this.extractData);
                 };
                 RepoService.prototype.extractData = function (res) {
