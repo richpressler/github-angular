@@ -1,5 +1,5 @@
 import {Injectable} from 'angular2/core';
-import {Http, Response} from 'angular2/http';
+import {Http, Response, Headers} from 'angular2/http';
 
 @Injectable()
 export class RepoService {
@@ -7,10 +7,14 @@ export class RepoService {
 
   }
 
-  private _repoUrl = "https://api.github.com/users/richpressler/repos";
+  private _repoUrl = "https://api.github.com/user/repos";
 
   getRepos() {
-    return this.http.get(this._repoUrl).map(this.extractData);
+    // Get auth from localStorage
+    let token = JSON.parse(window.localStorage.getItem('gh_token')).access_token;
+    let headers = new Headers();
+    headers.append('Authorization', 'token ' + token);
+    return this.http.get(this._repoUrl, {headers: headers}).map(this.extractData);
   }
 
   private extractData(res: Response) {

@@ -24,10 +24,14 @@ System.register(['angular2/core', 'angular2/http'], function(exports_1, context_
             RepoService = (function () {
                 function RepoService(http) {
                     this.http = http;
-                    this._repoUrl = "https://api.github.com/users/richpressler/repos";
+                    this._repoUrl = "https://api.github.com/user/repos";
                 }
                 RepoService.prototype.getRepos = function () {
-                    return this.http.get(this._repoUrl).map(this.extractData);
+                    // Get auth from localStorage
+                    var token = JSON.parse(window.localStorage.getItem('gh_token')).access_token;
+                    var headers = new http_1.Headers();
+                    headers.append('Authorization', 'token ' + token);
+                    return this.http.get(this._repoUrl, { headers: headers }).map(this.extractData);
                 };
                 RepoService.prototype.extractData = function (res) {
                     return res.json();

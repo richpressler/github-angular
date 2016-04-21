@@ -21,6 +21,9 @@ export class LoginComponent {
       };
       this.http.post('/access_token', JSON.stringify(data), {headers: headers}).subscribe(res => this.saveLogin(res));
     }
+    else if(window.localStorage.getItem('gh_token')) {
+      window.location.href = '/repos';
+    }
     else {
       window.location.href = 'https://github.com/login/oauth/authorize?client_id=c027f603d41d3cfe8e67';
     }

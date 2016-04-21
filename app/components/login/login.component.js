@@ -40,6 +40,9 @@ System.register(['angular2/core', 'angular2/router', 'angular2/http'], function(
                         };
                         this.http.post('/access_token', JSON.stringify(data), { headers: headers }).subscribe(function (res) { return _this.saveLogin(res); });
                     }
+                    else if (window.localStorage.getItem('gh_token')) {
+                        window.location.href = '/repos';
+                    }
                     else {
                         window.location.href = 'https://github.com/login/oauth/authorize?client_id=c027f603d41d3cfe8e67';
                     }
