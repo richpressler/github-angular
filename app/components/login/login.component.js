@@ -31,12 +31,13 @@ System.register(['angular2/core', 'angular2/router', 'angular2/http'], function(
                 }
                 LoginComponent.prototype.ngOnInit = function () {
                     if (this._routeParams.get('code')) {
+                        var headers = new http_1.Headers();
+                        headers.append('Content-Type', 'application/json');
                         var code = this._routeParams.get('code');
-                        var url = 'https://github.com/login/oauth/access_token';
-                        var secret = 'a786d611d4c948ec9566fe7ad85928874dc713ee';
-                        var clientId = 'c027f603d41d3cfe8e67';
-                        var data = 'client_id=' + clientId + '&client_secret=' + secret + '&code=' + code;
-                        this.http.post(url, data).subscribe(function (res) { return console.log(res); });
+                        var data = {
+                            code: code
+                        };
+                        this.http.post('/access_token', JSON.stringify(data), { headers: headers }).subscribe(function (res) { return console.log(res); });
                     }
                     else {
                         window.location.href = 'https://github.com/login/oauth/authorize?client_id=c027f603d41d3cfe8e67';
