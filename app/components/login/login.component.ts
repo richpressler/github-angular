@@ -13,11 +13,11 @@ export class LoginComponent {
   result: string;
 
   ngOnInit() {
-    if(!this._routeParams.get('code')) {
-      window.location.href = 'https://github.com/login/oauth/authorize?client_id=c027f603d41d3cfe8e67';
+    if(this._routeParams.get('code')) {
+      this.result = this._routeParams.get('code');
     }
     else {
-      this.result = this._routeParams.get('code');
+      window.location.href = 'https://github.com/login/oauth/authorize?client_id=c027f603d41d3cfe8e67';
     }
   }
 }
