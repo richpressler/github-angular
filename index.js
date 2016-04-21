@@ -9,7 +9,13 @@ app.set('view engine', 'html');
 
 app.use(express.static(__dirname));
 
-app.get('*', function(request, response) {
+app.get('/', function(request, response) {
+  response.render('./index.html');
+});
+app.get('/login', function(request, response) {
+  response.render('./index.html');
+});
+app.get('/repos', function(request, response) {
   response.render('./index.html');
 });
 
