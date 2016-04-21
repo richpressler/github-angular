@@ -3,6 +3,7 @@ import {HTTP_PROVIDERS} from 'angular2/http';
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/router';
 import {RepoService} from '../services/repo.service';
 import {LoginComponent} from './login/login.component';
+import {PostLoginComponent} from './post-login/post-login.component';
 import {RepoDisplayComponent} from './repo-display/repo-display.component';
 
 @RouteConfig([
@@ -11,6 +12,11 @@ import {RepoDisplayComponent} from './repo-display/repo-display.component';
     name: 'Login',
     component: LoginComponent,
     useAsDefault: true
+  },
+  {
+    path: '/post-login',
+    name: 'PostLogin',
+    component: PostLoginComponent
   },
   {
     path: '/repos',

@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/http', 'angular2/router', '../services/repo.service', './login/login.component', './repo-display/repo-display.component'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/http', 'angular2/router', '../services/repo.service', './login/login.component', './post-login/post-login.component', './repo-display/repo-display.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/http', 'angular2/router', '../servic
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, http_1, router_1, repo_service_1, login_component_1, repo_display_component_1;
+    var core_1, http_1, router_1, repo_service_1, login_component_1, post_login_component_1, repo_display_component_1;
     var AppComponent;
     return {
         setters:[
@@ -29,6 +29,9 @@ System.register(['angular2/core', 'angular2/http', 'angular2/router', '../servic
             function (login_component_1_1) {
                 login_component_1 = login_component_1_1;
             },
+            function (post_login_component_1_1) {
+                post_login_component_1 = post_login_component_1_1;
+            },
             function (repo_display_component_1_1) {
                 repo_display_component_1 = repo_display_component_1_1;
             }],
@@ -44,6 +47,11 @@ System.register(['angular2/core', 'angular2/http', 'angular2/router', '../servic
                             name: 'Login',
                             component: login_component_1.LoginComponent,
                             useAsDefault: true
+                        },
+                        {
+                            path: '/post-login',
+                            name: 'PostLogin',
+                            component: post_login_component_1.PostLoginComponent
                         },
                         {
                             path: '/repos',
