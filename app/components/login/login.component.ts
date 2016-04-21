@@ -19,7 +19,7 @@ export class LoginComponent {
       let data = {
         code: code
       };
-      this.http.post('/access_token', JSON.stringify(data), {headers: headers}).subscribe(res => this.saveLogin(res));
+      this.http.post('/access_token', JSON.stringify(data), {headers: headers}).subscribe(res => this.saveLogin(res.json()));
     }
     else if(window.localStorage.getItem('gh_token')) {
       window.location.href = '/repos';

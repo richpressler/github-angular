@@ -38,7 +38,7 @@ System.register(['angular2/core', 'angular2/router', 'angular2/http'], function(
                         var data = {
                             code: code
                         };
-                        this.http.post('/access_token', JSON.stringify(data), { headers: headers }).subscribe(function (res) { return _this.saveLogin(res); });
+                        this.http.post('/access_token', JSON.stringify(data), { headers: headers }).subscribe(function (res) { return _this.saveLogin(res.json()); });
                     }
                     else if (window.localStorage.getItem('gh_token')) {
                         window.location.href = '/repos';
