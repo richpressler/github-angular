@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', 'angular2/http'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1, contex
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1;
+    var core_1, router_1, http_1;
     var LoginComponent;
     return {
         setters:[
@@ -19,15 +19,24 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1, contex
             },
             function (router_1_1) {
                 router_1 = router_1_1;
+            },
+            function (http_1_1) {
+                http_1 = http_1_1;
             }],
         execute: function() {
             LoginComponent = (function () {
-                function LoginComponent(_routeParams) {
+                function LoginComponent(_routeParams, http) {
                     this._routeParams = _routeParams;
+                    this.http = http;
                 }
                 LoginComponent.prototype.ngOnInit = function () {
                     if (this._routeParams.get('code')) {
-                        this.result = this._routeParams.get('code');
+                        var code = this._routeParams.get('code');
+                        var url = 'https://github.com/login/oauth/access_token';
+                        var secret = 'a786d611d4c948ec9566fe7ad85928874dc713ee';
+                        var clientId = 'c027f603d41d3cfe8e67';
+                        var data = 'client_id=' + clientId + '&client_secret=' + secret + '&code=' + code;
+                        this.http.post(url, data).subscribe(function (res) { return console.log(res); });
                     }
                     else {
                         window.location.href = 'https://github.com/login/oauth/authorize?client_id=c027f603d41d3cfe8e67';
@@ -38,7 +47,7 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1, contex
                         selector: 'login',
                         templateUrl: 'app/components/login/login.component.html'
                     }), 
-                    __metadata('design:paramtypes', [router_1.RouteParams])
+                    __metadata('design:paramtypes', [router_1.RouteParams, http_1.Http])
                 ], LoginComponent);
                 return LoginComponent;
             }());
