@@ -11,9 +11,9 @@ export class RepoService {
 
   getRepos() {
     // Get auth from localStorage
-    let token = JSON.parse(window.localStorage.getItem('gh_token')).access_token;
+    let token = JSON.parse(window.sessionStorage.getItem('gh_token')).access_token;
     let headers = new Headers();
-    console.log(window.localStorage.getItem('gh_token'));
+    console.log(window.sessionStorage.getItem('gh_token'));
     headers.append('Authorization', 'token ' + token);
     return this.http.get(this._repoUrl, {headers: headers}).map(this.extractData);
   }

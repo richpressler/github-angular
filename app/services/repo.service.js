@@ -28,9 +28,9 @@ System.register(['angular2/core', 'angular2/http'], function(exports_1, context_
                 }
                 RepoService.prototype.getRepos = function () {
                     // Get auth from localStorage
-                    var token = JSON.parse(window.localStorage.getItem('gh_token')).access_token;
+                    var token = JSON.parse(window.sessionStorage.getItem('gh_token')).access_token;
                     var headers = new http_1.Headers();
-                    console.log(window.localStorage.getItem('gh_token'));
+                    console.log(window.sessionStorage.getItem('gh_token'));
                     headers.append('Authorization', 'token ' + token);
                     return this.http.get(this._repoUrl, { headers: headers }).map(this.extractData);
                 };
