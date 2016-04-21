@@ -10,6 +10,6 @@ export class LoginComponent {
   }
 
   ngOnInit() {
-    window.location.href = 'https://github.com/login/oauth/authorize?client_id=959b8f1a0973ebc31c50';
+    window.location.href = 'https://github.com/login/oauth/authorize?client_id=c027f603d41d3cfe8e67';
   }
 }
