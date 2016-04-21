@@ -13,6 +13,7 @@ export class RepoService {
     // Get auth from localStorage
     let token = JSON.parse(window.localStorage.getItem('gh_token')).access_token;
     let headers = new Headers();
+    console.log(token);
     headers.append('Authorization', token + ' OAUTH-TOKEN');
     return this.http.get(this._repoUrl, {headers: headers}).map(this.extractData);
   }
