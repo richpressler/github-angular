@@ -19,10 +19,15 @@ export class LoginComponent {
       let data = {
         code: code
       };
-      this.http.post('/access_token', JSON.stringify(data), {headers: headers}).subscribe(res => console.log(res));
+      this.http.post('/access_token', JSON.stringify(data), {headers: headers}).subscribe(res => this.saveLogin(res));
     }
     else {
       window.location.href = 'https://github.com/login/oauth/authorize?client_id=c027f603d41d3cfe8e67';
     }
+  }
+
+  saveLogin(tokenObj) {
+    window.localStorage.setItem('gh_token', JSON.stringify(tokenObj));
+    window.location.href = '/repos';
   }
 }

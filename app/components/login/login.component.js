@@ -30,6 +30,7 @@ System.register(['angular2/core', 'angular2/router', 'angular2/http'], function(
                     this.http = http;
                 }
                 LoginComponent.prototype.ngOnInit = function () {
+                    var _this = this;
                     if (this._routeParams.get('code')) {
                         var headers = new http_1.Headers();
                         headers.append('Content-Type', 'application/json');
@@ -37,11 +38,15 @@ System.register(['angular2/core', 'angular2/router', 'angular2/http'], function(
                         var data = {
                             code: code
                         };
-                        this.http.post('/access_token', JSON.stringify(data), { headers: headers }).subscribe(function (res) { return console.log(res); });
+                        this.http.post('/access_token', JSON.stringify(data), { headers: headers }).subscribe(function (res) { return _this.saveLogin(res); });
                     }
                     else {
                         window.location.href = 'https://github.com/login/oauth/authorize?client_id=c027f603d41d3cfe8e67';
                     }
+                };
+                LoginComponent.prototype.saveLogin = function (tokenObj) {
+                    window.localStorage.setItem('gh_token', JSON.stringify(tokenObj));
+                    window.location.href = '/repos';
                 };
                 LoginComponent = __decorate([
                     core_1.Component({
