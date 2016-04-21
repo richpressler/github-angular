@@ -26,12 +26,12 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1, contex
                     this._routeParams = _routeParams;
                 }
                 PostLoginComponent.prototype.ngOnInit = function () {
-                    console.log(this._routeParams);
+                    console.log(this._routeParams.get('code'));
                 };
                 PostLoginComponent = __decorate([
                     core_1.Component({
                         selector: 'post-login',
-                        templateUrl: 'app/components/post-login/post-login'
+                        templateUrl: 'app/components/post-login/post-login.component.html'
                     }), 
                     __metadata('design:paramtypes', [router_1.RouteParams])
                 ], PostLoginComponent);

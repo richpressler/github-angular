@@ -3,7 +3,7 @@ import {RouteParams} from 'angular2/router';
 
 @Component({
   selector: 'post-login',
-  templateUrl: 'app/components/post-login/post-login'
+  templateUrl: 'app/components/post-login/post-login.component.html'
 })
 export class PostLoginComponent {
   constructor(private _routeParams: RouteParams) {
@@ -11,6 +11,6 @@ export class PostLoginComponent {
   }
 
   ngOnInit() {
-    console.log(this._routeParams);
+    console.log(this._routeParams.get('code'));
   }
 }
