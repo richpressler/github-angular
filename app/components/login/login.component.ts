@@ -32,6 +32,6 @@ export class LoginComponent {
   saveLogin(tokenObj) {
     window.localStorage.setItem('gh_token', JSON.stringify(tokenObj));
     console.log(window.localStorage.getItem('gh_token'));
-    //window.location.href = '/repos';
+    window.location.href = '/repos';
   }
 }
