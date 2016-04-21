@@ -2,20 +2,14 @@ var express = require('express');
 var app = express();
 
 app.set('port', (process.env.PORT || 5000));
+app.use(express.static(__dirname));
+app.set('views', __dirname);
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
 
 app.use(express.static(__dirname));
 
-// views is directory for all template files
-app.set('views', __dirname + '/views');
-app.set('view engine', 'ejs');
-
-app.get('/', function(request, response) {
-  response.render('./index.html');
-});
-app.get('/login', function(request, response) {
-  response.render('./index.html');
-});
-app.get('/repos', function(request, response) {
+app.get('*', function(request, response) {
   response.render('./index.html');
 });
 
