@@ -44,7 +44,7 @@ System.register(['angular2/core', 'angular2/router', 'angular2/http'], function(
                         window.location.href = '/repos';
                     }
                     else {
-                        window.location.href = 'https://github.com/login/oauth/authorize?client_id=c027f603d41d3cfe8e67';
+                        window.location.href = 'https://github.com/login/oauth/authorize?client_id=c027f603d41d3cfe8e67&scope=repo';
                     }
                 };
                 LoginComponent.prototype.saveLogin = function (tokenObj) {
